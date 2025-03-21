@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export default function StudentManagement() {
   const [students, setStudents] = useState([]);
-  const [formData, setData] = useState({ lname: '', fname: '', course: '', year: '' });
+  const [formData, setInformations] = useState({ lname: '', fname: '', course: '', year: '' });
 
   useEffect(() => {
     fetchStudents();
@@ -23,7 +23,7 @@ export default function StudentManagement() {
     try {
       await axios.post('http://localhost:3000/add-students', formData);
       fetchStudents();
-      setData({ lname: '', fname: '', course: '', year: '' });
+      setInformations({ lname: '', fname: '', course: '', year: '' });
     } catch (error) {
       console.error('Error adding student:', error);
     }
@@ -52,26 +52,26 @@ export default function StudentManagement() {
             className="mt-1 p-3 border-2 border-pink-400 rounded-xl w-full shadow-md focus:outline-none focus:ring-2 focus:ring-purple-400 font-[\'Playfair Display\']"
             value={formData.lname}
             onChange={(e) =>
-              setData({ ...formData, lname: e.target.value })} required />
+              setInformations({ ...formData, lname: e.target.value })} required />
 
           <input type="text"
             placeholder="First Name"
             className="mt-1 p-3 border-2 border-pink-400 rounded-xl w-full shadow-md focus:outline-none focus:ring-2 focus:ring-purple-400 font-[\'Playfair Display\']"
             value={formData.fname}
             onChange={(e) =>
-              setData({ ...formData, fname: e.target.value })} required />
+              setInformations({ ...formData, fname: e.target.value })} required />
 
           <input type="text"
             placeholder="Course"
             className="mt-1 p-3 border-2 border-pink-400 rounded-xl w-full shadow-md focus:outline-none focus:ring-2 focus:ring-purple-400 font-[\'Playfair Display\']"
             value={formData.course} onChange={(e) =>
-              setData({ ...formData, course: e.target.value })} required />
+              setInformations({ ...formData, course: e.target.value })} required />
 
           <input type="number"
             placeholder="Year"
             className="mt-1 p-3 border-2 border-pink-400 rounded-xl w-full shadow-md focus:outline-none focus:ring-2 focus:ring-purple-400 font-[\'Playfair Display\']"
             value={formData.year} onChange={(e) =>
-              setData({ ...formData, year: e.target.value })} required />
+              setInformations({ ...formData, year: e.target.value })} required />
 
           <button type="submit"
             className="rounded-full bg-purple-500 border-4 border-pink-500 text-white hover:text-white shadow-2xl font-bold text-xl transition-transform transform hover:scale-110 px-4 py-2 w-full">
